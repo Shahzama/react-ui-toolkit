@@ -1,3 +1,4 @@
+import { useId } from "react";
 import type { HTMLAttributes } from "react";
 
 export interface CardProps extends HTMLAttributes<HTMLElement> {
@@ -5,8 +6,10 @@ export interface CardProps extends HTMLAttributes<HTMLElement> {
 }
 
 export function Card({ title, className = "", children, ...props }: CardProps) {
-  return <section className={`rui-card ${className}`.trim()} {...props}>
-    {title && <h2 className="rui-card__title">{title}</h2>}
+  const titleId = useId();
+
+  return <section className={`rui-card ${className}`.trim()} aria-labelledby={title ? titleId : undefined} {...props}>
+    {title && <h2 id={titleId} className="rui-card__title">{title}</h2>}
     {children}
   </section>;
 }

@@ -13,14 +13,35 @@ A small, accessible, and reusable React component toolkit built with TypeScript.
 
 ## Getting started
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
+The development server will print the local address in the terminal.
+
 ## Available scripts
-- `npm run dev` — start the development server
-- `npm run build` — type-check and build for production
-- `npm run preview` — preview the production build
+- `pnpm run dev` — start the development server
+- `pnpm run typecheck` — check TypeScript without creating build files
+- `pnpm run build` — type-check and build for production
+- `pnpm test` — run the component test suite once
+- `pnpm run test:watch` — run component tests in watch mode
+- `pnpm run preview` — preview the production build
+
+## Tests
+
+The component tests use Vitest and React Testing Library. They cover Button defaults and variants, Card structure, and TextField labels, hints, and error states.
+
+Run the full local check before opening a pull request:
+
+```bash
+pnpm run typecheck
+pnpm run build
+pnpm test
+```
+
+## Continuous integration
+
+GitHub Actions runs the same type-check, production build, and test suite on pushes and pull requests targeting `main`. The workflow is in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
 ## Example
 ```tsx
